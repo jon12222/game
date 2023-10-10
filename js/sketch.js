@@ -12,7 +12,7 @@ let tank1Score = 0, tank2Score = 0;
 
 function preload(){
   startVideo = createVideo('Video.mp4');
-  Titleimg = loadImage('Title.png');
+  //Titleimg = loadImage('Title.png');
   Titlesound = loadSound('Title.mp3');
   shootSound = loadSound('Shoot.mp3');
   hitSound = loadSound('Hit.mp3');
