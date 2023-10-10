@@ -2,7 +2,7 @@ let tank1, tank2, tankO, poopShoot1, poopShoot2, poopShootO, angle1, angle2, gro
 let tankSize = 25, resistance = 5, shell, shellSize = 5, maxSpeed = 149, minSpeed = 51, shellSpeed1 = 100, shellSpeed2 = 100, shellSpeedO = shellSpeed1;
 let borderOut = 25,borderIn = 80;
 let cnvW = 600;
-let hitSound, shootSound, deathSound, resetSound, startVideo, titlePlayed = 0;
+let hitSound, shootSound, deathSound, resetSound, startVideo, ballsSound, titlePlayed = 0;
 let num = 0, run = 1;
 let vidLength = 8, start = 0;
 let grain, fill, grainWidth = 10, grainLevel = 20, roughness = 0.4;
@@ -19,6 +19,7 @@ function preload(){
   deathSound = loadSound('Death.mp3');
   resetSound = loadSound('Reset.mp3');
   gameSound = loadSound('gameSound.mp3');
+  ballsSound = loadSound('3 BIG BALLS.mp3');
 }
 
 function shoot(x, y, direction, speed, tank) {
@@ -218,7 +219,6 @@ function game(){ //Screen 2
   text('Player 1\nPower: ' + shellSpeed1 + '\nDirection: ' + int(poopShoot1.rotation), cnvW/20, cnvW/20);
   text('Player 2\nPower: ' + shellSpeed2 + '\nDirection: ' + int(poopShoot2.rotation), cnvW - cnvW*3/20, cnvW/20);
 
-
   if (shellLife == 1){
     if (shell.collided(grain) || shell.collided(ground) || shell.collided(tankO)) {
       shell.remove();
@@ -246,8 +246,16 @@ function score(){ //Screen 3
 
   if (tankO == tank2){
     text('Player 1 Wins!!!\n\nPress Enter to continue.', cnvW/2.5,60);
+    if (tank1Score == 3){
+      ballsSound.play();
+      gameSound.stop();
+    }
    } else if (tankO == tank1){
     text('Player 2 Wins!!!\n\nPress Enter to continue.', cnvW/2.5,60);
+    if (tank2Score == 3){
+      ballsSound.play();
+      gameSound.stop();
+    }
    }
   if (kb.pressing('Enter')){
     for (let i = grain.length; i > 0; i--){
