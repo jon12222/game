@@ -228,8 +228,16 @@ function game(){ //Screen 2
       if (shell.collided(tankO)){
         if (tankO == tank1){
           tank1Score++;
+          if (tank2Score == 3){
+            ballsSound.play();
+            gameSound.stop();
+          }
          } else if (tankO == tank2){
           tank2Score++;
+          if (tank1Score == 3){
+            ballsSound.play();
+            gameSound.stop();
+          }
          }
         deathSound.play();
         num = 3;
@@ -246,16 +254,8 @@ function score(){ //Screen 3
 
   if (tankO == tank2){
     text('Player 1 Wins!!!\n\nPress Enter to continue.', cnvW/2.5,60);
-    if (tank1Score == 2){
-      ballsSound.play();
-      gameSound.stop();
-    }
    } else if (tankO == tank1){
     text('Player 2 Wins!!!\n\nPress Enter to continue.', cnvW/2.5,60);
-    if (tank2Score == 2){
-      ballsSound.play();
-      gameSound.stop();
-    }
    }
   if (kb.pressing('Enter')){
     for (let i = grain.length; i > 0; i--){
