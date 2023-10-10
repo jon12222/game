@@ -12,7 +12,7 @@ let tank1Score = 0, tank2Score = 0;
 
 function preload(){
   startVideo = createVideo('Video.mp4');
-  //Titleimg = loadImage('Title.png');
+  Titleimg = loadImage('Title.png');
   Titlesound = loadSound('Title.mp3');
   shootSound = loadSound('Shoot.mp3');
   hitSound = loadSound('Hit.mp3');
@@ -246,13 +246,13 @@ function score(){ //Screen 3
 
   if (tankO == tank2){
     text('Player 1 Wins!!!\n\nPress Enter to continue.', cnvW/2.5,60);
-    if (tank2Score == 2){
+    if (tank1Score == 2){
       ballsSound.play();
       gameSound.stop();
     }
    } else if (tankO == tank1){
     text('Player 2 Wins!!!\n\nPress Enter to continue.', cnvW/2.5,60);
-    if (tank1Score == 2){
+    if (tank2Score == 2){
       ballsSound.play();
       gameSound.stop();
     }
